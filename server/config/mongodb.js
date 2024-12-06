@@ -10,10 +10,17 @@ const connectDB = async () => {
             console.error('Database connection error:', err);
         });
 
-        await mongoose.connect(`${process.env.MONGODB_URI}/Imagify`, {
+        // await mongoose.connect(`${process.env.MONGODB_URI}/Imagify`, {
+        //     useNewUrlParser: true,
+        //     useUnifiedTopology: true,
+        // });
+
+        await mongoose.connect(`${process.env.MONGODB_URI}`, {
+            dbName: 'Imagify',
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        });
+          });
+          
     } catch (error) {
         console.error('Error connecting to the database:', error);
         process.exit(1);
